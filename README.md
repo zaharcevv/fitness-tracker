@@ -80,9 +80,9 @@ curl "http://localhost:8080/food-entries/daily-summary?date=2026-09-13" -H "Auth
 
 | Resource | Endpoints |
 |---|---|
-| Auth | `POST /auth/register`, `POST /auth/login` |
-| Users | `GET/PUT/DELETE /users/{id}`, `GET /users/me`|
-| Foods | `POST/GET/PUT/DELETE /foods`, `/foods/{id}` |
+| Auth | `POST /auth/register`, `/auth/login` |
+| Users | `GET/PUT/DELETE /users/{id}`, `/users/me`|
+| Foods | `POST/GET/PUT/DELETE /foods`, `/foods`, `/foods/{id}`  |
 | Food Entries | `POST/GET/PUT/DELETE /food-entries`, `/food-entries/{id}` |
 | | `GET /food-entries/daily-summary?date=` |
 | | `GET /food-entries/weekly-summary?weekStart=&weekEnd=` |

@@ -3,7 +3,8 @@ package com.hristijan.fitness_tracker.controller;
 import com.hristijan.fitness_tracker.entity.Food;
 import com.hristijan.fitness_tracker.repository.FoodRepository;
 import jakarta.validation.Valid;
-
+import java.util.Map;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -65,6 +66,15 @@ public class FoodController {
                     return ResponseEntity.ok(toDTO(food));
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Food>> getFoods() {
+        User authenticatedUser = getAuthenticatedUser();
+
+        List<Food> foods = foodRepository.findByUser(authenticatedUser.getUserId());
+
+        return ResponseEntity.ok(foods);
     }
 
     @PutMapping("/{id}")
