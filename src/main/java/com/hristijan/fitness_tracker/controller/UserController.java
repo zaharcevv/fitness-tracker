@@ -49,6 +49,12 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/me")
+    public UserResponseDTO getCurrentUser() {
+        User authenticatedUser = getAuthenticatedUser();
+        return toDTO(authenticatedUser);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @Valid @RequestBody User updatedUser) {
         User authenticatedUser = getAuthenticatedUser();
