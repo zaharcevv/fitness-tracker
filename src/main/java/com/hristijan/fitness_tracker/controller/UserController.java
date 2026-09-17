@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import com.hristijan.fitness_tracker.dto.UserResponseDTO;
+import com.hristijan.fitness_tracker.dto.UserUpdateRequestDTO;
 import java.util.UUID;
 
 @RestController
@@ -56,7 +57,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @Valid @RequestBody User updatedUser) {
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @Valid @RequestBody UserUpdateRequestDTO updatedUser) {
         User authenticatedUser = getAuthenticatedUser();
         return userRepository.findById(id)
                 .map(existingUser -> {
@@ -64,7 +65,6 @@ public class UserController {
                         return ResponseEntity.status(403).<UserResponseDTO>build();
                     }
                     existingUser.setUsername(updatedUser.getUsername());
-                    existingUser.setPassword(updatedUser.getPassword());
                     existingUser.setDailyCalorieTarget(updatedUser.getDailyCalorieTarget());
                     existingUser.setDailyProteinTarget(updatedUser.getDailyProteinTarget());
                     existingUser.setDailyCarbsTarget(updatedUser.getDailyCarbsTarget());
