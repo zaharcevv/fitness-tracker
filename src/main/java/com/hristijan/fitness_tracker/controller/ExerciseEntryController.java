@@ -13,6 +13,9 @@ import com.hristijan.fitness_tracker.repository.UserRepository;
 import com.hristijan.fitness_tracker.repository.ExerciseRepository;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
+
 
 
 
@@ -80,6 +83,7 @@ public class ExerciseEntryController {
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
+    
 
     @PutMapping("/{id}")
     public ResponseEntity<ExerciseEntryResponseDTO> updateExerciseEntry(@PathVariable UUID id, @Valid @RequestBody ExerciseEntry updatedExerciseEntry) {

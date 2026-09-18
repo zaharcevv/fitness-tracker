@@ -86,7 +86,7 @@ curl "http://localhost:8080/food-entries/daily-summary?date=2026-09-13" -H "Auth
 | Food Entries | `POST/GET/PUT/DELETE /food-entries`, `/food-entries/{id}` |
 | | `GET /food-entries/daily-summary?date=` |
 | | `GET /food-entries/weekly-summary?weekStart=&weekEnd=` |
-| Exercises | `POST/GET/PUT/DELETE /exercises`, `/exercises/{id}` |
+| Exercises | `POST/GET/PUT/DELETE /exercises`, `/exercises`, `/exercises/{id}` |
 | Exercise Entries | `POST/GET/PUT/DELETE /exercise-entries`, `/exercise-entries/{id}` |
 | Weight Entries | `POST/GET/PUT/DELETE /weight-entries`, `/weight-entries/{id}` |
 | | `GET /weight-entries/weight-trends?startDate=&endDate=` |

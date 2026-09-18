@@ -10,7 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import com.hristijan.fitness_tracker.repository.UserRepository;
 import com.hristijan.fitness_tracker.entity.User;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.List;
 import java.util.UUID;
 
 
@@ -76,6 +76,15 @@ public class ExerciseController {
                     return ResponseEntity.ok(toDTO(exerciseRepository.save(existingExercise)));
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Exercise>> getExercises() {
+        User authenticatedUser = getAuthenticatedUser();
+
+        List<Exercise> exercises = exerciseRepository.findByUser(authenticatedUser.getUserId());
+
+        return ResponseEntity.ok(exercises);
     }
 
    
